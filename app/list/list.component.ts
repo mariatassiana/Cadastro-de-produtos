@@ -1,6 +1,8 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { products } from '../mock';
+import { product } from '../produtos';
+import { ProdutoServiceService } from './produto-service.service';
 
 @Component({
   selector: 'app-list',
@@ -9,11 +11,17 @@ import { products } from '../mock';
 })
 export class ListComponent implements OnInit {
 
-  produto = products;
+  constructor(private produtoservice: ProdutoServiceService) { }
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.getprodutos();
   }
 
+  produto: product[] = [];
+
+  getprodutos(): void {
+     this.produtoservice.getproducts()
+        .subscribe(product => this.produto = product);
+  }
 }
