@@ -11,6 +11,10 @@ import { ProdutoServiceService } from './produto-service.service';
 })
 export class ListComponent implements OnInit {
 
+  selectedproduct?:product;
+  Onselect(x: product): void{
+    this.selectedproduct = x;
+  }
   constructor(private produtoservice: ProdutoServiceService) { }
 
 
@@ -19,6 +23,13 @@ export class ListComponent implements OnInit {
   }
 
   produto: product[] = [];
+
+  OnSelect(product: product): void{
+    this.selectedproduct = product;
+  }
+
+  eventButton(product: product){
+    this.selectedproduct=product}
 
   getprodutos(): void {
      this.produtoservice.getproducts()

@@ -1,9 +1,17 @@
 <h1>List of Products</h1>
-
-
     <div>
       <label for="product-name">Product's name: </label>
-      
+    </div>
+
+    <div *ngIf="selectedproduct">
+
+        <h2>{{selectedproduct.name}}</h2>
+        <input [(ngModel)]="selectedproduct.name" placeholder="Product's name">
+        <input [(ngModel)]="selectedproduct.category" placeholder="Category">
+        <input [(ngModel)]="selectedproduct.amount"placeholder="Amount">
+        <input [(ngModel)]="selectedproduct.price"placeholder="Price">
+        <input [(ngModel)]="selectedproduct.code"placeholder="Code">
+
     </div>
 
 <table border="2">
@@ -14,6 +22,7 @@
             <th>Amount</th>
             <th>Price</th>
             <th>Code</th> 
+            <th>Edit</th>
         </tr>
         
     </thead>
@@ -24,6 +33,12 @@
             <td>{{product.amount}}</td>
             <td>{{product.price}}</td>
             <td>{{product.code}}</td>
+            <button type="submit"(click)="OnSelect(product)">Edit</button>
+            
+        
         </tr>
     </thead>
 </table>
+<div>
+   <app-edit></app-edit>
+</div>
